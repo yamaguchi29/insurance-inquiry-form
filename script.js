@@ -70,7 +70,8 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
     }
   } catch (error) {
     console.error(error);
-    alert("エラーが発生しました");
+    // これで「何が」原因かスマホの画面に表示されます
+    alert("エラー詳細:\n" + error.name + ": " + error.message);
     btn.disabled = false;
     btn.innerText = "スプレッドシートに保存";
   }
