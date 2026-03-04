@@ -44,6 +44,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
     btn.innerText = "送信中...";
 
     const data = {
+      userId: profile.userId,
       userName: userName,
       policyNumber: document.getElementById("policy-number").value,
       name: name,
@@ -66,20 +67,20 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
       location.reload();
     }
 
-    try {
-      if (liff.isInClient()) {
-        // LINEアプリ内で開いている場合のみ実行可能
-        await liff.sendMessages([
-          {
-            type: "text",
-            text: "お問い合わせありがとうございます。\n内容を確認しておりますので、少々お待ちください。",
-          },
-        ]);
-        console.log("メッセージ送信成功");
-      }
-    } catch (error) {
-      console.error("メッセージ送信失敗", error);
-    }
+    // try {
+    //   if (liff.isInClient()) {
+    //     // LINEアプリ内で開いている場合のみ実行可能
+    //     await liff.sendMessages([
+    //       {
+    //         type: "text",
+    //         text: "お問い合わせありがとうございます。\n内容を確認しておりますので、少々お待ちください。",
+    //       },
+    //     ]);
+    //     console.log("メッセージ送信成功");
+    //   }
+    // } catch (error) {
+    //   console.error("メッセージ送信失敗", error);
+    // }
   } catch (error) {
     console.error(error);
     alert("エラーが発生しました");
