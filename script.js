@@ -28,9 +28,15 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
       userName = profile.displayName;
     }
 
-    const amount = document.getElementById("amount").value;
-    if (!amount) {
-      alert("金額を入力してください");
+    const name = document.getElementById("name").value;
+    if (!name) {
+      alert("名前を入力してください");
+      return;
+    }
+
+    const phone = document.getElementById("phone").value;
+    if (!phone) {
+      alert("電話番号を入力してください");
       return;
     }
 
@@ -39,9 +45,9 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
 
     const data = {
       userName: userName,
-      category: document.getElementById("category").value,
-      amount: document.getElementById("amount").value,
-      memo: document.getElementById("memo").value,
+      policyNumber: document.getElementById("policy-number").value,
+      name: name,
+      phone: phone,
     };
 
     await fetch(GAS_URL, {
