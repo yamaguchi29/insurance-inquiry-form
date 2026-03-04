@@ -1,7 +1,7 @@
 // --- 設定項目 ---
 const LIFF_ID = "2009133124-AF3hgmtv";
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbzzWGG_kU97EIbz2RIlL1O8QlESuihtZ5B0bTc64tNM7O7Crag2jOLJv5kWcTfWJYA2sQ/exec";
+  "https://script.google.com/macros/s/AKfycbzfWgF2whgDYuz9uIuZkwPJ9njxfIWBHNDtlnHlHZjvC1RrO3PRKkyJPKcTNsCERsmLbw/exec";
 
 async function initLiff() {
   try {
@@ -9,7 +9,7 @@ async function initLiff() {
 
     // PCブラウザなどの外部ブラウザでログインしていない場合
     if (!liff.isLoggedIn() && !liff.isInClient()) {
-      // 自動でログイン画面へ（不要ならここを消してボタン側で制御も可）
+      // 自動でログイン画面へ
       liff.login();
     }
   } catch (error) {
@@ -70,7 +70,6 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
     }
   } catch (error) {
     console.error(error);
-    // これで「何が」原因かスマホの画面に表示されます
     alert("エラー詳細:\n" + error.name + ": " + error.message);
     btn.disabled = false;
     btn.innerText = "スプレッドシートに保存";
