@@ -20,23 +20,25 @@ async function initLiff() {
 document.getElementById("submit-btn").addEventListener("click", async () => {
   const btn = document.getElementById("submit-btn");
   let userName = "不明なユーザー";
+  let userId = "";
 
   try {
-    // LINEアプリ内、またはログイン済みの場合のみプロフィール取得
+    // LINEアプリ内、またはログイン済みの場合
     if (liff.isLoggedIn()) {
       const profile = await liff.getProfile();
       userName = profile.displayName;
-    }
-
-    const name = document.getElementById("name").value;
-    if (!name) {
-      alert("名前を入力してください");
+      userId = profile.userId;
+    } else {
+      // PCなどで未ログイン時にボタンを押した場合のガード
+      alert("LINEログインが必要です");
+      liff.login();
       return;
     }
 
+    const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
-    if (!phone) {
-      alert("電話番号を入力してください");
+    if (!name || !phone) {
+      alert("必須項目を入力してください");
       return;
     }
 
@@ -44,7 +46,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
     btn.innerText = "送信中...";
 
     const data = {
-      userId: profile.userId,
+      userId: userId,
       userName: userName,
       policyNumber: document.getElementById("policy-number").value,
       name: name,
