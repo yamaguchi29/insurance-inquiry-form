@@ -1,7 +1,7 @@
 // --- 設定項目 ---
-const LIFF_ID = "2009133124-tG6paVoL";
+const LIFF_ID = "2009133124-AF3hgmtv";
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbwNQckWtUJ08ycrH3FCH4eslU_LG9cMKSf49ABAtX8KQ0rVcXb0vFsnLrmxAfESt1pqaA/exec";
+  "https://script.google.com/macros/s/AKfycbzzWGG_kU97EIbz2RIlL1O8QlESuihtZ5B0bTc64tNM7O7Crag2jOLJv5kWcTfWJYA2sQ/exec";
 
 async function initLiff() {
   try {

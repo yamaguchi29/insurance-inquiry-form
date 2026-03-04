@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>家計簿入力</title>
+    <title>火災保険総合窓口 問い合わせフォーム</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   </head>
@@ -11,31 +11,19 @@
     <div class="container">
       <h2>家計簿記帳</h2>
       <div class="item">
-        <label>カテゴリー</label>
-        <select id="category">
-          <option value="食費">食費</option>
-          <option value="日用品">日用品</option>
-          <option value="交際費">交際費</option>
-          <option value="交通費">交通費</option>
-          <option value="その他">その他</option>
-        </select>
+        <label>証券番号</label>
+        <input type="text" id="policy-number" placeholder="例：T001" />
       </div>
       <div class="item">
-        <label>金額 (円)</label>
-        <input
-          type="number"
-          id="amount"
-          placeholder="1000"
-          inputmode="numeric"
-        />
+        <label>名前（必須）</label>
+        <input type="text" id="name" placeholder="例：山田 太郎" />
       </div>
       <div class="item">
-        <label>メモ</label>
-        <textarea id="memo" rows="2"></textarea>
+        <label>電話番号（必須）</label>
+        <input type="tel" id="phone" placeholder="例：03-1234-5678" />
       </div>
       <button id="submit-btn">スプレッドシートに保存</button>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
