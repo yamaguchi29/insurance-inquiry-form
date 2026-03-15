@@ -60,6 +60,23 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
       body: JSON.stringify(data),
     });
 
+    // liff.isInClient()（LINEアプリ内で開いている時）のみ実行可能
+    if (liff.isInClient()) {
+      await liff.sendMessages([
+        {
+          type: "text",
+          text:
+            "【お問い合わせ完了】\nお名前：" +
+            name +
+            "\n証券番号：" +
+            (policyNumber || "なし") +
+            "\n電話番号：" +
+            phone +
+            "\n\n上記内容で受付いたしました。担当者からの返信をお待ちください。",
+        },
+      ]);
+    }
+
     alert(userName + "さんのデータを送信しました！");
 
     // LINEアプリ内なら閉じる、PCなら画面リセット
