@@ -84,7 +84,11 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
         "https://line.me/R/oaMessage/@073gbchj/?" +
         encodeURIComponent(messageText);
 
-      window.location.href = lineUrl;
+      // window.location.href = lineUrl;
+      liff.openWindow({
+        url: lineUrl,
+        external: true, // これをtrueにすると外部ブラウザ/アプリで開きます
+      });
     }
 
     // LINEアプリ内なら閉じる、PCなら画面リセット
