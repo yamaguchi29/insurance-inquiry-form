@@ -70,7 +70,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
             "【お問い合わせ完了】\nお名前：" +
             name +
             "\n証券番号：" +
-            (policyNumber || "なし") +
+            policyNumber +
             "\n電話番号：" +
             phone +
             "\n\n上記内容で受付いたしました。担当者からの返信をお待ちください。",
