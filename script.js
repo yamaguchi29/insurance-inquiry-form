@@ -62,23 +62,30 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
     });
 
     // liff.isInClient()（LINEアプリ内で開いている時）のみ実行可能
-    if (liff.isInClient()) {
-      await liff.sendMessages([
-        {
-          type: "text",
-          text:
-            "【お問い合わせ完了】\nお名前：" +
-            name +
-            "\n証券番号：" +
-            policyNumber +
-            "\n電話番号：" +
-            phone +
-            "\n\n上記内容で受付いたしました。担当者からの返信をお待ちください。",
-        },
-      ]);
-    }
+    const messageText =
+      "【お問い合わせ完了】\nお名前：" +
+      name +
+      "\n証券番号：" +
+      policyNumber +
+      "\n電話番号：" +
+      phone;
 
-    alert(name + "さんのデータを送信しました！");
+    if (liff.isInClient()) {
+      // スマホのLINEアプリ内なら、そのままトークに投稿（リプライが発動）
+      await liff.sendMessages([{ type: "text", text: messageText }]);
+      alert(name + "さんのデータを送信しました！");
+      liff.closeWindow();
+    } else {
+      // PCブラウザなどの場合
+      alert("LINEを起動して送信ボタンを押してください。");
+
+      // LINEの公式アカウントとのトーク画面を開き、メッセージを自動入力させるURL
+      const lineUrl =
+        "https://line.me/R/oaMessage/@073gbchj/?" +
+        encodeURIComponent(messageText);
+
+      window.location.href = lineUrl;
+    }
 
     // LINEアプリ内なら閉じる、PCなら画面リセット
     if (liff.isInClient()) {
