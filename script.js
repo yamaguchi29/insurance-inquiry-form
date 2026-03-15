@@ -81,7 +81,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
 
       // LINEの公式アカウントとのトーク画面を開き、メッセージを自動入力させるURL
       const lineUrl =
-        "https://line.me/R/oaMessage/@073gbchj/?" +
+        "https://line.me/R/oaMessage/@073gbchj/?text=" +
         encodeURIComponent(messageText);
 
       // window.location.href = lineUrl;
