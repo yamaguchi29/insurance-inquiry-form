@@ -19,8 +19,8 @@ async function initLiff() {
 
 document.getElementById("submit-btn").addEventListener("click", async () => {
   const btn = document.getElementById("submit-btn");
-  let userName = "不明なユーザー";
   let userId = "";
+  let userName = "不明なユーザー";
 
   try {
     // LINEアプリ内、またはログイン済みの場合
@@ -37,6 +37,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
 
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
+    const policyNumber = document.getElementById("policy-number").value;
     if (!name || !phone) {
       alert("必須項目を入力してください");
       return;
@@ -48,7 +49,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
     const data = {
       userId: userId,
       userName: userName,
-      policyNumber: document.getElementById("policy-number").value,
+      policyNumber: policyNumber,
       name: name,
       phone: phone,
     };
@@ -77,7 +78,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
       ]);
     }
 
-    alert(userName + "さんのデータを送信しました！");
+    alert(name + "さんのデータを送信しました！");
 
     // LINEアプリ内なら閉じる、PCなら画面リセット
     if (liff.isInClient()) {
